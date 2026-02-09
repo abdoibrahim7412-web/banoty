@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
@@ -71,12 +71,19 @@
 
   <button onclick="toggleMusic()">تشغيل / إيقاف الأغنية</button>
 
-  <audio id="song" autoplay loop>
-    <source src="https://drive.google.com/uc?export=download&id=11AvIHqglV4mgJn55U7YRKAxsP-ijPpqm" type="audio/mpeg">
+  <audio id="song" loop>
+    <source src="Albumaty.Com_amrw_dyab_baba.mp3.mpeg" type="audio/mpeg">
   </audio>
 
   <script>
     const song = document.getElementById("song");
+
+    // أول لمسة على الشاشة تشغّل الأغنية (علشان قيود المتصفح)
+    document.body.addEventListener("click", function startMusic() {
+      song.play();
+      document.body.removeEventListener("click", startMusic);
+    });
+
     function toggleMusic() {
       if (song.paused) song.play();
       else song.pause();
