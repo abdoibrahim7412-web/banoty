@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Banoty ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: url("https://i.imgur.com/4M7IWwP.png") center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Arial', sans-serif;
+      color: #6b4f4f;
+      overflow: hidden;
+    }
+
+    .letters {
+      font-size: 90px;
+      font-weight: bold;
+    }
+
+    .text {
+      font-size: 22px;
+      margin-top: 10px;
+    }
+
+    .date {
+      margin-top: 8px;
+      font-size: 18px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 25px;
+      background: #e25555;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    audio {
+      display: none;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      color: #e25555;
+      animation: float 6s linear infinite;
+      font-size: 20px;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="letters">ع ♥ س</div>
+  <div class="text">بعشقك يبنوتي</div>
+  <div class="date">27 / 11</div>
+
+  <button onclick="toggleMusic()">تشغيل / إيقاف الأغنية</button>
+
+  <audio id="song" autoplay loop>
+    <source src="https://drive.google.com/uc?export=download&id=11AvIHqglV4mgJn55U7YRKAxsP-ijPpqm" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const song = document.getElementById("song");
+    function toggleMusic() {
+      if (song.paused) song.play();
+      else song.pause();
+    }
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.innerText = "❤";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 500);
+  </script>
+
+</body>
+</html>
